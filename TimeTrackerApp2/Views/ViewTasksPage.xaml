@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TimeTrackerApp2.Views.ViewTasksPage"
+             Title="View Tasks"
+             BackgroundColor="Pink">
+    <VerticalStackLayout
+         Spacing="75"
+         Padding="30,0"
+         VerticalOptions="Center"
+        >
+         <Label
+            Text="Your Tasks"
+            Style="{StaticResource TitleLabelStyling}"/>
+
+        <ListView x:Name="TasksListView"
+                      RowHeight="200"
+                      ItemSelected="TasksListView_ItemSelected"
+                      >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                          <ViewCell>
+
+                                <HorizontalStackLayout
+                                Padding="20"
+                                Spacing="30">
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding StartTime}"
+                                       FontSize="30"/>
+
+                                        <Label Text="{Binding Endtime}"
+                                       FontSize="30"/>
+
+                                    </VerticalStackLayout>
+                                
+                                <VerticalStackLayout>
+                                     <Label Text="{Binding TaskDetails}"
+                                       FontSize="30"/>
+
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+                            </ViewCell>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,25 +1,26 @@
-﻿namespace TimeTrackerApp2;
+﻿
+using TimeTrackerApp2.Models;
+using TimeTrackerApp2.Views;
+
+namespace TimeTrackerApp2;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
 
-	public MainPage()
-	{
-		InitializeComponent();
-	}
+    public MainPage()
+    {
+        InitializeComponent();
+    }
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
+    void AddTaskBtn_Clicked(System.Object sender, System.EventArgs e)
+    {
+        Navigation.PushAsync(new AddNewTaskPage());
+    }
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+    void ViewTasksBtn_Clicked(System.Object sender, System.EventArgs e)
+    {
+        Navigation.PushAsync(new ViewTasksPage());
+    }
 }
 
 
