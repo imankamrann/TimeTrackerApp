@@ -2,8 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TimeTrackerApp2.Views.ViewTasksPage"
-             Title="View Tasks"
-             BackgroundColor="Pink">
+             Title="View Tasks">
     <VerticalStackLayout
          Spacing="75"
          Padding="30,0"
@@ -12,6 +11,10 @@
          <Label
             Text="Your Tasks"
             Style="{StaticResource TitleLabelStyling}"/>
+
+        <!--<Label
+            x:Name="ChosenDay"
+            Style="{StaticResource TitleLabelStyling}"/>-->
 
         <ListView x:Name="TasksListView"
                       RowHeight="200"

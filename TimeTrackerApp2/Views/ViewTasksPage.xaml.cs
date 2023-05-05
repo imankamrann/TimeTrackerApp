@@ -1,4 +1,6 @@
-﻿namespace TimeTrackerApp2.Views;
+﻿using TimeTrackerApp2.Models;
+
+namespace TimeTrackerApp2.Views;
 
 public partial class ViewTasksPage : ContentPage
 {

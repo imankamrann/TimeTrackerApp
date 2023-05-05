@@ -2,11 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TimeTrackerApp2.Views.AddNewTaskPage"
-             Title="Add New Task"
-             BackgroundColor="Pink">
+             Title="Add New Task">
 
     <VerticalStackLayout
-            Spacing="75"
+            Spacing="60"
             Padding="30,0"
             VerticalOptions="Center">
 
@@ -14,20 +13,39 @@
             Text="Add New Task"
             Style="{StaticResource TitleLabelStyling}"/>
 
-        <Entry
+        <!--<Entry
             x:Name="StartTimeEntry"
             Placeholder="Enter Start Time..."
+            />-->
+         <Label
+            Text="Choose Start Time:"
+            Style="{StaticResource NormalLabelStyling}"/>
+
+        <TimePicker
+            x:Name="StartTimePicker"
+            Time="0"
+            PropertyChanged="StartTimePicker_PropertyChanged"
             />
 
-        <Entry
-            x:Name="EndTimeEntry"
-            Placeholder="Enter End Time..."
+           <Label
+            Text="Choose End Time:"
+            Style="{StaticResource NormalLabelStyling}"/>
+
+        <TimePicker
+            x:Name="EndTimePicker"
+            Time="0"
+            PropertyChanged="EndTimePicker_PropertyChanged"
             />
 
-        <Entry
-            x:Name="DateEntry"
-            Placeholder="Enter Date..."
+          <Label
+            Text="Choose Date:"
+            Style="{StaticResource NormalLabelStyling}"/>
+
+        <DatePicker
+            x:Name="TaskDatePicker"
+            PropertyChanged="TaskDatePicker_PropertyChanged"
             />
+
 
         <Entry
             x:Name="TaskDescriptionEntry"
@@ -35,7 +53,9 @@
             />
 
         <Button
+            x:Name="SaveTaskBtn"
             Text="Save"
+            Clicked="SaveTaskBtn_Clicked"
             />
 
             

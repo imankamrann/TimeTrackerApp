@@ -21,6 +21,7 @@ namespace TimeTrackerApp2.Models
                 StartTime = task.StartTime,
                 EndTime = task.EndTime,
                 TaskDate = task.TaskDate,
+                Duration = task.Duration,
                 TaskDetails = task.TaskDetails
             }
             );
