@@ -19,26 +19,42 @@
         <ListView x:Name="TasksListView"
                       RowHeight="200"
                       ItemSelected="TasksListView_ItemSelected"
-                      >
-                <ListView.ItemTemplate>
+                      BackgroundColor="Transparent" >
+
+                <ListView.ItemTemplate
+                    ItemsSource="{Binding Source={x:Static local:TaskRepository.TasksList}}"
+                    >
+                     
                     <DataTemplate>
                           <ViewCell>
-
                                 <HorizontalStackLayout
                                 Padding="20"
                                 Spacing="30">
-                                    <VerticalStackLayout>
-                                        <Label Text="{Binding StartTime}"
-                                       FontSize="30"/>
 
-                                        <Label Text="{Binding Endtime}"
-                                       FontSize="30"/>
+                                    <VerticalStackLayout>
+                                        <Label
+                                            Text="{Binding StartTime,  StringFormat={}{0:h:mm tt}}"
+                                            FontSize="20"/>
+                                        <Label
+                                            Text="to"
+                                            FontSize="20"/>
+
+                                        <Label
+                                            Text="{Binding EndTime,  StringFormat={}{0:h:mm tt}}"
+                                            FontSize="20"/>
+
+                                        <Label
+                                            Text="on"
+                                            FontSize="20"/>
+                                         <Label
+                                            Text="{Binding TaskDate, StringFormat={}{0:MMMM d yyyy}}"
+                                            FontSize="20"/>
 
                                     </VerticalStackLayout>
                                 
                                 <VerticalStackLayout>
                                      <Label Text="{Binding TaskDetails}"
-                                       FontSize="30"/>
+                                       FontSize="20"/>
 
                                 </VerticalStackLayout>
                             </HorizontalStackLayout>
