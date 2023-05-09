@@ -12,14 +12,14 @@ public partial class MainPage : ContentPage
         InitializeComponent();
     }
 
-    void AddTaskBtn_Clicked(System.Object sender, System.EventArgs e)
+    async void AddTaskBtn_Clicked(System.Object sender, System.EventArgs e)
     {
-        Navigation.PushAsync(new AddNewTaskPage());
+        await Navigation.PushAsync(new AddNewTaskPage());
     }
 
-    void ViewTasksBtn_Clicked(System.Object sender, System.EventArgs e)
+    async void ViewTasksBtn_Clicked(System.Object sender, System.EventArgs e)
     {
-        Navigation.PushAsync(new ViewTasksPage());
+        await Navigation.PushAsync(new ViewTasksPage());
     }
 }
 
