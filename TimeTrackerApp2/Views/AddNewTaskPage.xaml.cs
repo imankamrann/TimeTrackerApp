@@ -29,9 +29,16 @@ public partial class AddNewTaskPage : ContentPage
 
             if (taskDetails != null)
             {
-                TaskRepository.AddNewTask(newTask);
+                var doesTaskExist = TaskRepository.CheckNewTask(newTask);
                 //await DisplayAlert("new task added:", $"{newTask.StartTime.ToString("h:mm tt")}, {newTask.EndTime.ToString("h:mm tt")}, {newTask.TaskDate.ToString("MMMM d yyyy")} , {newTask.TaskDetails}", "ok");
-
+                if (doesTaskExist)
+                {
+                    TaskRepository.AddNewTask(newTask);
+                }
+                else
+                {
+                    await DisplayAlert("Task Exists!", "Enter Unique Task", "ok");
+                }
             }
             else
             {

@@ -7,25 +7,28 @@ public partial class ViewTasksPage : ContentPage
     public ViewTasksPage()
     {
         InitializeComponent();
-        OnAppearing();
-
-
-    }
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
         TasksListView.ItemsSource = TaskRepository.GetTasks();
+        //OnAppearing();
+
 
     }
+    //protected override void OnAppearing()
+    //{
+    //    base.OnAppearing();
+
+
+    //}
 
 
     void TasksListView_ItemSelected(System.Object sender, Microsoft.Maui.Controls.SelectedItemChangedEventArgs e)
     {
+        var selectedTask = (Models.Task)TasksListView.SelectedItem;
+        Navigation.PushAsync(new TaskDetailsAndUpdatePage(selectedTask));
     }
 
-    async void AddTaskBtn_Clicked(System.Object sender, System.EventArgs e)
-    {
-        await Navigation.PushAsync(new AddNewTaskPage());
-    }
+    //async void AddTaskBtn_Clicked(System.Object sender, System.EventArgs e)
+    //{
+    //    await Navigation.PushAsync(new AddNewTaskPage());
+    //}
 
 }

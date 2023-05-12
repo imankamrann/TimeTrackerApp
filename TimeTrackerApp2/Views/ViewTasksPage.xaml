@@ -15,12 +15,12 @@
                  HorizontalOptions="Center"
             Style="{StaticResource TitleLabelStyling}"/>
 
-        <Button
+        <!--<Button
             x:Name="AddTaskBtn"
             Text="Add Task"
             HorizontalOptions="Center"
             Clicked="AddTaskBtn_Clicked"
-            />
+            />-->
        
 
         <!--<Label
@@ -30,14 +30,18 @@
         <ListView x:Name="TasksListView"
                       RowHeight="200"
                       ItemSelected="TasksListView_ItemSelected"
-                      BackgroundColor="Transparent" >
-
+                      BackgroundColor="Transparent"
+                  HorizontalOptions="Center"
+            VerticalOptions="Center">
+                    
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <HorizontalStackLayout
                                 Padding="20"
-                                Spacing="30">
+                                Spacing="30"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
 
                             <VerticalStackLayout>
                                 <Label
