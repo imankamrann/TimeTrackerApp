@@ -40,11 +40,15 @@
          
             />
 
+        <Frame>
 
-        <Entry
+             <Entry
             x:Name="TaskDescriptionEntry"
             Placeholder="Enter Task Description..."
             />
+
+        </Frame>
+        
 
         <Button
             x:Name="SaveUpdatedTaskBtn"

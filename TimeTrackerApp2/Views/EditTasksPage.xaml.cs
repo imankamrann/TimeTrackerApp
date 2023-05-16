@@ -44,6 +44,8 @@ public partial class EditTasksPage : ContentPage
                 {
 
                     TaskRepository.AddNewTask(_edittedTask);
+                    await DisplayAlert("Task Updated!", "", "ok");
+                    await Navigation.PushAsync(new ViewTasksPage());
                 }
                 else
                 {

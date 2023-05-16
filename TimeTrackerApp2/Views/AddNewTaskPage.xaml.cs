@@ -34,6 +34,8 @@ public partial class AddNewTaskPage : ContentPage
                 if (doesTaskExist)
                 {
                     TaskRepository.AddNewTask(newTask);
+                    await DisplayAlert("Task Added!", "", "ok");
+
                 }
                 else
                 {

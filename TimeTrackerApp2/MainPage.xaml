@@ -12,11 +12,12 @@
 
              <Label
                 Text="Time Tracker App"
+                FontAttributes="Italic"
                  Style="{StaticResource TitleLabelStyling}"/>
 
             <Image
-                Source="https://www.pngmart.com/files/6/Clock-PNG-File.png"
-                HeightRequest="100"
+                Source="https://www.pngmart.com/files/12/My-Neighbor-Totoro-Transparent-Background.png"
+                HeightRequest="200"
                 HorizontalOptions="Center" />
 
             <HorizontalStackLayout
