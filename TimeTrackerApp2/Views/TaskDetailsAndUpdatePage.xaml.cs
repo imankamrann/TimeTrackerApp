@@ -20,16 +20,19 @@ public partial class TaskDetailsAndUpdatePage : ContentPage
         Navigation.PushAsync(new EditTasksPage(_task));
     }
 
-    async System.Threading.Tasks.Task deleteTaskBtn_ClickedAsync(System.Object sender, System.EventArgs e)
+
+
+    async void deleteTaskBtn2_Clicked(System.Object sender, System.EventArgs e)
     {
         try
         {
             TaskRepository.DeleteTask(_task);
             var doesTaskExist = TaskRepository.CheckNewTask(_task);
 
-            if (!doesTaskExist)
+            if (doesTaskExist)
             {
                 await DisplayAlert("Task Deleted!", "", "ok");
+                await Navigation.PushAsync(new ViewTasksPage());
             }
 
         }

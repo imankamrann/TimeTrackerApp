@@ -32,7 +32,7 @@ namespace TimeTrackerApp2.Models
             {
                 if (t.StartTime == task.StartTime && t.EndTime == task.EndTime && t.TaskDate == task.TaskDate && t.TaskDetails == task.TaskDetails)
                 {
-                    return false; // Task already exists
+                    return false; // Task already exists/not unique
                 }
             }
             return true; // Task is unique

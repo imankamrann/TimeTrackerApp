@@ -35,6 +35,7 @@ public partial class AddNewTaskPage : ContentPage
                 {
                     TaskRepository.AddNewTask(newTask);
                     await DisplayAlert("Task Added!", "", "ok");
+                    await Navigation.PushAsync(new ViewTasksPage());
 
                 }
                 else

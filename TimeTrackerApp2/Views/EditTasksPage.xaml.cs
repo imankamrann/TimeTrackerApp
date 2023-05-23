@@ -5,14 +5,17 @@ namespace TimeTrackerApp2.Views;
 public partial class EditTasksPage : ContentPage
 {
     private Models.Task _edittedTask;
-    public EditTasksPage(Models.Task _task)
+    private Models.Task _oldTask;
+
+    public EditTasksPage(Models.Task task)
     {
         InitializeComponent();
-        _edittedTask = _task;
-        TaskDatePicker.Date = _task.TaskDate;
+        _edittedTask = task;
+        _oldTask = task;
+        TaskDatePicker.Date = task.TaskDate;
         //StartTimePicker.Time = _task.StartTime; 
         //EndTimePicker.Time = _task.EndTime;
-        TaskDescriptionEntry.Text = _task.TaskDetails;
+        TaskDescriptionEntry.Text = task.TaskDetails;
 
 
 
@@ -37,12 +40,11 @@ public partial class EditTasksPage : ContentPage
 
             if (taskDetails != null)
             {
-                TaskRepository.DeleteTask(_edittedTask);
+                TaskRepository.DeleteTask(_oldTask);
                 var doesTaskExist = TaskRepository.CheckNewTask(_edittedTask);
                 //await DisplayAlert("new task added:", $"{newTask.StartTime.ToString("h:mm tt")}, {newTask.EndTime.ToString("h:mm tt")}, {newTask.TaskDate.ToString("MMMM d yyyy")} , {newTask.TaskDetails}", "ok");
                 if (doesTaskExist)
                 {
-
                     TaskRepository.AddNewTask(_edittedTask);
                     await DisplayAlert("Task Updated!", "", "ok");
                     await Navigation.PushAsync(new ViewTasksPage());

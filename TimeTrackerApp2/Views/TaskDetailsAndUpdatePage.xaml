@@ -53,6 +53,11 @@
             Clicked="editTaskBtn_Clicked"
             Text="Edit Task"/>
 
+             <Button
+            x:Name="deleteTaskBtn2"
+            Clicked="deleteTaskBtn2_Clicked"
+            Text=" Delete "/>
+
             <!--<Button
             x:Name="deleteTaskBtn"
             Clicked="deleteTaskBtn_Clicked"

@@ -26,9 +26,13 @@ public partial class ViewTasksPage : ContentPage
         Navigation.PushAsync(new TaskDetailsAndUpdatePage(selectedTask));
     }
 
-    //async void AddTaskBtn_Clicked(System.Object sender, System.EventArgs e)
-    //{
-    //    await Navigation.PushAsync(new AddNewTaskPage());
-    //}
+    async void addNewTaskBtn_Clicked(System.Object sender, System.EventArgs e)
+    {
+        await Navigation.PushAsync(new AddNewTaskPage());
+    }
 
+    async void goToHomeBtn_Clicked(System.Object sender, System.EventArgs e)
+    {
+        await Navigation.PushAsync(new MainPage());
+    }
 }
