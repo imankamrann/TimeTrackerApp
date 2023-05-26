@@ -11,7 +11,7 @@
             HorizontalOptions="Center">
 
              <Label
-                Text="Time Tracker App"
+                Text="Task Tracker App"
                 FontAttributes="Italic"
                  Style="{StaticResource TitleLabelStyling}"/>
 

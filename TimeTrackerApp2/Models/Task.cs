@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace TimeTrackerApp2.Models
 {
     public class Task
