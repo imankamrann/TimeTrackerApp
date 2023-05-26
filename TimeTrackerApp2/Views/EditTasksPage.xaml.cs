@@ -42,10 +42,12 @@ public partial class EditTasksPage : ContentPage
             {
                 TaskRepository.DeleteTask(_oldTask);
                 var doesTaskExist = TaskRepository.CheckNewTask(_edittedTask);
+
                 //await DisplayAlert("new task added:", $"{newTask.StartTime.ToString("h:mm tt")}, {newTask.EndTime.ToString("h:mm tt")}, {newTask.TaskDate.ToString("MMMM d yyyy")} , {newTask.TaskDetails}", "ok");
                 if (doesTaskExist)
                 {
                     TaskRepository.AddNewTask(_edittedTask);
+                    WriteToCsvFileWithAlerts(_edittedTask);
                     await DisplayAlert("Task Updated!", "", "ok");
                     await Navigation.PushAsync(new ViewTasksPage());
                 }
@@ -66,5 +68,18 @@ public partial class EditTasksPage : ContentPage
             await DisplayAlert("Error Occurred", "Please Reopen App", "ok");
         }
 
+    }
+
+    private async void WriteToCsvFileWithAlerts(Models.Task edittedTask)
+    {
+        try
+        {
+            TaskRepository.WriteToCsvFile(edittedTask);
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", $"Failed to write task to CSV file. Error: {ex.Message}", "OK");
+
+        }
     }
 }

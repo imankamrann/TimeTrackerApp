@@ -34,9 +34,10 @@ public partial class AddNewTaskPage : ContentPage
                 if (doesTaskExist)
                 {
                     TaskRepository.AddNewTask(newTask);
-                    WriteToCsvFile(newTask);
+                    WriteToCsvFileWithAlerts(newTask);
                     await DisplayAlert("Task Added!", "", "ok");
                     await Navigation.PushAsync(new ViewTasksPage());
+
 
                 }
                 else
@@ -58,20 +59,33 @@ public partial class AddNewTaskPage : ContentPage
 
     }
 
-    private async void WriteToCsvFile(Models.Task newTask)
+    //private async void WriteToCsvFile(Models.Task newTask)
+    //{
+    //    try
+    //    {
+    //        string filePath = Path.Combine(FileSystem.AppDataDirectory, "/Users/iman/Documents/Imans_Projects/TimeTrackerApp2/TimeTrackerApp2/Resources/Raw/tasks.csv");
+
+    //        using (StreamWriter streamWriter = new StreamWriter(filePath, true))
+    //        {
+    //            await streamWriter.WriteLineAsync($"{newTask.StartTime};{newTask.EndTime};{newTask.TaskDate};{newTask.TaskDetails}");
+
+    //        }
+
+    //        // await DisplayAlert("Success", "Task written to CSV file.", "OK");
+
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        await DisplayAlert("Error", $"Failed to write task to CSV file. Error: {ex.Message}", "OK");
+
+    //    }
+    //}
+
+    private async void WriteToCsvFileWithAlerts(Models.Task newTask)
     {
         try
         {
-            string filePath = Path.Combine(FileSystem.AppDataDirectory, "/Users/iman/Documents/Imans_Projects/TimeTrackerApp2/TimeTrackerApp2/Resources/Raw/tasks.csv");
-
-            using (StreamWriter streamWriter = new StreamWriter(filePath, true))
-            {
-                await streamWriter.WriteLineAsync($"{newTask.StartTime};{newTask.EndTime};{newTask.TaskDate};{newTask.TaskDetails}");
-
-            }
-
-            await DisplayAlert("Success", "Task written to CSV file.", "OK");
-
+            TaskRepository.WriteToCsvFile(newTask);
         }
         catch (Exception ex)
         {
