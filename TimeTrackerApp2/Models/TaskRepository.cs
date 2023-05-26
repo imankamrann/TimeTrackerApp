@@ -27,6 +27,21 @@ namespace TimeTrackerApp2.Models
 
         }
 
+        public static void AddTaskToListFromCSV(DateTime startTime, DateTime endTime, DateTime taskDate, string taskDetails)
+        {
+            _tasksList.Add(
+                 new Task
+                 {
+                     StartTime = startTime,
+                     EndTime = endTime,
+                     TaskDate = taskDate,
+                     TaskDetails = taskDetails
+
+                 }
+             );
+
+        }
+
         public static bool CheckNewTask(Task task)
         {
             foreach (var t in _tasksList)
@@ -56,6 +71,10 @@ namespace TimeTrackerApp2.Models
             }
         }
 
+        public static void ClearTasks()
+        {
+            _tasksList.Clear();
+        }
 
     }
 }

@@ -34,8 +34,8 @@ public partial class AddNewTaskPage : ContentPage
                 if (doesTaskExist)
                 {
                     TaskRepository.AddNewTask(newTask);
-                    await DisplayAlert("Task Added!", "", "ok");
                     WriteToCsvFile(newTask);
+                    await DisplayAlert("Task Added!", "", "ok");
                     await Navigation.PushAsync(new ViewTasksPage());
 
                 }
@@ -58,25 +58,6 @@ public partial class AddNewTaskPage : ContentPage
 
     }
 
-    //private async void WriteToCsvFile(Models.Task newTask)
-    //{
-    //    try
-    //    {
-    //        Stream stream = await FileSystem.Current.OpenAppPackageFileAsync("tasks.csv");
-
-    //        using (StreamWriter streamWriter = new StreamWriter(stream))
-    //        {
-    //            await streamWriter.WriteLineAsync($"{newTask.StartTime};{newTask.EndTime};{newTask.TaskDate};{newTask.TaskDetails}");
-    //        }
-
-    //        await DisplayAlert("Success", "Task written to CSV file.", "OK");
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        await DisplayAlert("Error", $"Failed to write task to CSV file. Error: {ex.Message}", "OK");
-    //    }
-    //}
-
     private async void WriteToCsvFile(Models.Task newTask)
     {
         try
@@ -86,7 +67,7 @@ public partial class AddNewTaskPage : ContentPage
             using (StreamWriter streamWriter = new StreamWriter(filePath, true))
             {
                 await streamWriter.WriteLineAsync($"{newTask.StartTime};{newTask.EndTime};{newTask.TaskDate};{newTask.TaskDetails}");
-                //await streamWriter.WriteLineAsync($"hehe");
+
             }
 
             await DisplayAlert("Success", "Task written to CSV file.", "OK");
