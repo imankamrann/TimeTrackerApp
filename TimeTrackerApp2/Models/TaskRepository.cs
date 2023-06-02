@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace TimeTrackerApp2.Models
@@ -92,6 +93,7 @@ namespace TimeTrackerApp2.Models
         {
             _tasksList.Clear();
         }
+
         public static void WriteToCsvFile(Models.Task newTask)
         {
             string filePath = Path.Combine(FileSystem.AppDataDirectory, "/Users/iman/Documents/Imans_Projects/TimeTrackerApp2/TimeTrackerApp2/Resources/Raw/tasks.csv");
@@ -104,6 +106,52 @@ namespace TimeTrackerApp2.Models
 
         }
 
+        public static void ReadFromCSVFile()
+        {
+            try
+            {
+                ClearTasks();
+                using (Stream filestream = FileSystem.Current.OpenAppPackageFileAsync("/Users/iman/Documents/Imans_Projects/TimeTrackerApp2/TimeTrackerApp2/Resources/Raw/tasks.csv").Result)
+                {
+                    using (StreamReader streamReader = new StreamReader(filestream))
+                    {
+                        string l;
+                        while ((l = streamReader.ReadLine()) != null)
+                        {
+                            var result = l.Split(';');
+
+                            var startTimeString = result[0];
+                            var endTimeString = result[1];
+                            var taskDateString = result[2];
+                            var taskDetails = result[3];
+
+                            DateTime startTime;
+                            DateTime endTime;
+                            DateTime taskDate;
+
+                            if (DateTime.TryParse(startTimeString, out startTime) &&
+                                DateTime.TryParse(endTimeString, out endTime) &&
+                                DateTime.TryParse(taskDateString, out taskDate))
+                            {
+                                AddTaskToListFromCSV(startTime, endTime, taskDate, taskDetails);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Error occurred while converting string task info to its type");
+                            }
+                        }
+                        streamReader.Close();
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to read tasks from CSV file. Error: {ex.Message}");
+            }
+        }
+
     }
+
 }
 

@@ -7,7 +7,7 @@ public partial class ViewTasksPage : ContentPage
     public ViewTasksPage()
     {
         InitializeComponent();
-        ReadTasksFromCsvFile();
+        UIReadTasksFromCsvFile();
         //TasksListView.ItemsSource = TaskRepository.GetTasks();
 
     }
@@ -35,44 +35,55 @@ public partial class ViewTasksPage : ContentPage
         await Navigation.PushAsync(new MainPage());
     }
 
-    private async void ReadTasksFromCsvFile()
+    //private async void ReadTasksFromCsvFile()
+    //{
+    //    try
+    //    {
+    //        TaskRepository.ClearTasks();
+    //        Stream filestream = await FileSystem.Current.OpenAppPackageFileAsync("/Users/iman/Documents/Imans_Projects/TimeTrackerApp2/TimeTrackerApp2/Resources/Raw/tasks.csv");
+    //        StreamReader streamReader = new StreamReader(filestream);
+    //        string l;
+    //        while ((l = streamReader.ReadLine()) != null)
+    //        {
+    //            var result = l.Split(';');
+
+    //            var startTimeString = result[0];
+    //            var endTimeString = result[1];
+    //            var taskDateString = result[2];
+    //            var taskDetails = result[3];
+
+    //            DateTime startTime;
+    //            DateTime endTime;
+    //            DateTime taskDate;
+
+    //            if (DateTime.TryParse(startTimeString, out startTime) &&
+    //                DateTime.TryParse(endTimeString, out endTime) &&
+    //                DateTime.TryParse(taskDateString, out taskDate))
+    //            {
+    //                TaskRepository.AddTaskToListFromCSV(startTime, endTime, taskDate, taskDetails);
+    //            }
+    //            else
+    //            {
+    //                await DisplayAlert("Error", "Error occurred while converting string task info to its type", "OK");
+    //            }
+    //        }
+    //        streamReader.Close();
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        await DisplayAlert("Error", $"Failed to read tasks from CSV file. Error: {ex.Message}", "OK");
+    //    }
+    //}
+
+    private async void UIReadTasksFromCsvFile()
     {
         try
         {
-            TaskRepository.ClearTasks();
-            Stream filestream = await FileSystem.Current.OpenAppPackageFileAsync("/Users/iman/Documents/Imans_Projects/TimeTrackerApp2/TimeTrackerApp2/Resources/Raw/tasks.csv");
-            StreamReader streamReader = new StreamReader(filestream);
-            string l;
-            while ((l = streamReader.ReadLine()) != null)
-            {
-                var result = l.Split(';');
-
-                var startTimeString = result[0];
-                var endTimeString = result[1];
-                var taskDateString = result[2];
-                var taskDetails = result[3];
-
-                DateTime startTime;
-                DateTime endTime;
-                DateTime taskDate;
-
-                if (DateTime.TryParse(startTimeString, out startTime) &&
-                    DateTime.TryParse(endTimeString, out endTime) &&
-                    DateTime.TryParse(taskDateString, out taskDate))
-                {
-                    TaskRepository.AddTaskToListFromCSV(startTime, endTime, taskDate, taskDetails);
-                }
-                else
-                {
-                    await DisplayAlert("Error", "Error occurred while converting string task info to its type", "OK");
-                }
-            }
-            streamReader.Close();
+            TaskRepository.ReadFromCSVFile();
         }
         catch (Exception ex)
         {
             await DisplayAlert("Error", $"Failed to read tasks from CSV file. Error: {ex.Message}", "OK");
         }
     }
-
 }

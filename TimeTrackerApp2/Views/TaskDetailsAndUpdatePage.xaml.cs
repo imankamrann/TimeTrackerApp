@@ -27,6 +27,7 @@ public partial class TaskDetailsAndUpdatePage : ContentPage
         try
         {
             TaskRepository.DeleteTask(_task);
+            deleteTaskFromCSV(_task);
             var doesTaskExist = TaskRepository.CheckNewTask(_task);
 
             if (doesTaskExist)
@@ -41,4 +42,11 @@ public partial class TaskDetailsAndUpdatePage : ContentPage
             await DisplayAlert("Error Occurred", "Please Reopen App", "ok");
         }
     }
+
+
+    void deleteTaskFromCSV(Models.Task _task)
+    {
+
+    }
+
 }
